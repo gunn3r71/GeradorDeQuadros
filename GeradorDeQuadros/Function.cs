@@ -23,7 +23,7 @@ public class Function
 
     public async Task<QuadroGeradoResponse> FunctionHandler(GerarQuadroRequest request, ILambdaContext context)
     {
-        const string basePrompt = "Quadro artístico no estilo {0} com o tema {1} Cores principais: {2}";
+        const string basePrompt = "Você é um especialista em arte e cria quadros exclusivos, crie um quadro com a seguinte especificação: Quadro artístico no estilo {0} com o tema {1} Cores principais: {2}";
         const string model = "amazon.titan-image-generator-v1";
         const string contentType = "application/json";
 
@@ -44,7 +44,7 @@ public class Function
                 taskType = "TEXT_IMAGE",
                 textToImageParams = new
                 {
-                    text = $"Você é um especialista em arte e cria quadros exclusivos, crie um quadro com a seguinte especificação: {prompt}"
+                    text = prompt
                 },
                 imageGenerationConfig = new 
                 {
